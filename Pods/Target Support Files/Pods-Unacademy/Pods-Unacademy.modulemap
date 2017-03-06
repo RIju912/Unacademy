@@ -1,0 +1,6 @@
+framework module Pods_Unacademy {
+  umbrella header "Pods-Unacademy-umbrella.h"
+
+  export *
+  module * { export * }
+}
