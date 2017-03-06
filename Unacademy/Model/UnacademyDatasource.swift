@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+class UnacademyDatasource: NSObject {
+    
+    //MARK: - Data Source
+    var unacademyDatasource = [UnacademyAPIResults]()
+    
+}

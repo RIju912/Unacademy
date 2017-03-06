@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+import Foundation
+
+//MARK: - Constants
+struct UrlConstants {
+    
+    static var tutorialListAPI = "https://api.myjson.com/"
+    static var notApplicable = "N/A"
+    
+}

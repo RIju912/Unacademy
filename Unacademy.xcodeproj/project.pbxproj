@@ -16,6 +16,7 @@
 		3EF9B6E41E6D596B00741A77 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9B6E31E6D596B00741A77 /* Constants.swift */; };
 		3EF9B6E61E6D599C00741A77 /* UnacademyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9B6E51E6D599C00741A77 /* UnacademyService.swift */; };
 		3EF9B6E81E6D5A0400741A77 /* UnacademyDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9B6E71E6D5A0400741A77 /* UnacademyDatasource.swift */; };
+		3EF9B6EA1E6D64FA00741A77 /* UnacademyAPIResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9B6E91E6D64FA00741A77 /* UnacademyAPIResults.swift */; };
 		FDB5185CEACD6F07356DD006 /* Pods_Unacademy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F7341DD5C5259A7AA6A6FFF /* Pods_Unacademy.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		3EF9B6E31E6D596B00741A77 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3EF9B6E51E6D599C00741A77 /* UnacademyService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnacademyService.swift; sourceTree = "<group>"; };
 		3EF9B6E71E6D5A0400741A77 /* UnacademyDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnacademyDatasource.swift; sourceTree = "<group>"; };
+		3EF9B6E91E6D64FA00741A77 /* UnacademyAPIResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnacademyAPIResults.swift; sourceTree = "<group>"; };
 		5E4C3252012CCDB745609235 /* Pods-Unacademy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unacademy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unacademy/Pods-Unacademy.debug.xcconfig"; sourceTree = "<group>"; };
 		6A3E1C71E293C50236F4207B /* Pods-Unacademy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unacademy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unacademy/Pods-Unacademy.release.xcconfig"; sourceTree = "<group>"; };
 		9F7341DD5C5259A7AA6A6FFF /* Pods_Unacademy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unacademy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				3EF9B6E71E6D5A0400741A77 /* UnacademyDatasource.swift */,
+				3EF9B6E91E6D64FA00741A77 /* UnacademyAPIResults.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EF9B6CC1E6D551700741A77 /* ViewController.swift in Sources */,
+				3EF9B6EA1E6D64FA00741A77 /* UnacademyAPIResults.swift in Sources */,
 				3EF9B6E61E6D599C00741A77 /* UnacademyService.swift in Sources */,
 				3EF9B6CA1E6D551700741A77 /* AppDelegate.swift in Sources */,
 				3EF9B6E81E6D5A0400741A77 /* UnacademyDatasource.swift in Sources */,
@@ -444,6 +448,7 @@
 				3EF9B6DA1E6D551700741A77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
