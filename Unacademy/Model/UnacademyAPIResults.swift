@@ -33,6 +33,7 @@ class UnacademyAPIResults: NSObject{
         }else{
             categoryDisplay = UrlConstants.notApplicable
         }
+        
     }
     
     //MARK: - Clear Data

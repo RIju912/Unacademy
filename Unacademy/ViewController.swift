@@ -9,9 +9,25 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    
+    @IBOutlet weak var iboTableView: UITableView!{
+        
+        didSet {
+            
+            iboTableView.estimatedRowHeight = 60.0
+            iboTableView.rowHeight = UITableViewAutomaticDimension
+            
+        }
+    }
+    var arrDataSource: UnacademyAPIResults?
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad() 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         UnacademyService.sharedInstance().getAllCourses {(collection:UnacademyDatasource?, error:Error?) -> Void in
             
