@@ -12,5 +12,7 @@ class UnacademyDatasource: NSObject {
     
     //MARK: - Data Source
     var unacademyDatasource = [UnacademyAPIResults]()
+    var unacademyShortName = [UnacademyShortName]()
+    var unacademysCategoryDisplay = [UnacademyCategoryDisplay]()
     
 }

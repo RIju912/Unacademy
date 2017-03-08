@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E2FC3101E70250A0069479F /* UnacademyCategoryDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FC30F1E70250A0069479F /* UnacademyCategoryDisplay.swift */; };
+		3E2FC3121E7025BB0069479F /* UnacademyShortName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2FC3111E7025BB0069479F /* UnacademyShortName.swift */; };
 		3EF4D9A01E6FDBA9002BC402 /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF4D99E1E6FDBA9002BC402 /* TextViewCell.swift */; };
 		3EF4D9A11E6FDBA9002BC402 /* TextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EF4D99F1E6FDBA9002BC402 /* TextViewCell.xib */; };
 		3EF4D9A41E6FDBBF002BC402 /* TextLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF4D9A21E6FDBBF002BC402 /* TextLabelCell.swift */; };
@@ -29,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E2FC30F1E70250A0069479F /* UnacademyCategoryDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnacademyCategoryDisplay.swift; sourceTree = "<group>"; };
+		3E2FC3111E7025BB0069479F /* UnacademyShortName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnacademyShortName.swift; sourceTree = "<group>"; };
 		3EF4D99E1E6FDBA9002BC402 /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
 		3EF4D99F1E6FDBA9002BC402 /* TextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewCell.xib; sourceTree = "<group>"; };
 		3EF4D9A21E6FDBBF002BC402 /* TextLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextLabelCell.swift; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 				3EF9B6E71E6D5A0400741A77 /* UnacademyDatasource.swift */,
 				3EF9B6E91E6D64FA00741A77 /* UnacademyAPIResults.swift */,
 				3EF4D9AD1E7007A2002BC402 /* UnTextMoDel.swift */,
+				3E2FC30F1E70250A0069479F /* UnacademyCategoryDisplay.swift */,
+				3E2FC3111E7025BB0069479F /* UnacademyShortName.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -310,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EF4D9AE1E7007A2002BC402 /* UnTextMoDel.swift in Sources */,
+				3E2FC3101E70250A0069479F /* UnacademyCategoryDisplay.swift in Sources */,
 				3EF9B6CC1E6D551700741A77 /* ViewController.swift in Sources */,
 				3EF4D9A91E6FDC68002BC402 /* TextView.swift in Sources */,
 				3EF9B6EA1E6D64FA00741A77 /* UnacademyAPIResults.swift in Sources */,
@@ -317,6 +324,7 @@
 				3EF9B6CA1E6D551700741A77 /* AppDelegate.swift in Sources */,
 				3EF9B6ED1E6E8FB500741A77 /* UnacademySingleton.swift in Sources */,
 				3EF4D9A01E6FDBA9002BC402 /* TextViewCell.swift in Sources */,
+				3E2FC3121E7025BB0069479F /* UnacademyShortName.swift in Sources */,
 				3EF9B6E81E6D5A0400741A77 /* UnacademyDatasource.swift in Sources */,
 				3EF4D9B01E700B3E002BC402 /* UnTextLabel.swift in Sources */,
 				3EF4D9A41E6FDBBF002BC402 /* TextLabelCell.swift in Sources */,

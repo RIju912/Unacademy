@@ -61,10 +61,12 @@ class UnacademyService: NSObject{
                         }
                         
                         for courseJson in courseList {
-                            print(courseList)
                             let courseL = UnacademyAPIResults(json: courseJson)
                             collection.unacademyDatasource.append(courseL)
-                            
+                            let courseName = UnacademyShortName(json: courseJson)
+                            collection.unacademyShortName.append(courseName)
+                            let courseD = UnacademyCategoryDisplay(json: courseJson)
+                            collection.unacademysCategoryDisplay.append(courseD)
                         }
                         
                         completion(collection, nil)

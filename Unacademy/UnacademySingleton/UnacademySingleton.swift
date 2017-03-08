@@ -15,10 +15,6 @@ class UnacademySingleton {
         return instance
     }()
     
-    var arrayOfTestPreparations = [String]()
-    var arrayOfOthers = [String]()
-    var arrayOfTestProgramming = [String]()
-    var arrayOfTestLanguage = [String]()
-    var arrayOfJobPreparations = [String]()
+    var filterArrayCategory = [UnacademyCategoryDisplay]()
 
 }

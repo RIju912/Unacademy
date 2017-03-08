@@ -8,6 +8,24 @@
 
 import UIKit
 
+extension Array {
+    
+    func filterDuplicates( includeElement: (_ lhs:Element, _ rhs:Element) -> Bool) -> [Element]{
+        var results = [Element]()
+        
+        forEach { (element) in
+            let existingElements = results.filter {
+                return includeElement(element, $0)
+            }
+            if existingElements.count == 0 {
+                results.append(element)
+            }
+        }
+        
+        return results
+    }
+}
+
 class ViewController: UIViewController {
     
     
@@ -21,6 +39,9 @@ class ViewController: UIViewController {
         }
     }
     var arrDataSource: UnacademyAPIResults?
+    var arrNames = [UnacademyShortName]()
+    var arrDisplayCategory = [UnacademyCategoryDisplay]()
+    let sharedInstnce = UnacademySingleton.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +52,16 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         
         UnacademyService.sharedInstance().getAllCourses {(collection:UnacademyDatasource?, error:Error?) -> Void in
+            self.arrNames = (collection?.unacademyShortName)!
+            self.arrDisplayCategory = (collection?.unacademysCategoryDisplay)!
+            self.sharedInstnce.filterArrayCategory = self.arrDisplayCategory.filterDuplicates { $0.categoryDisplay! == $1.categoryDisplay! }
+            self.iboTableView.reloadData()
             
         }
     }
     @IBAction func ibaBackPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
-        //arrDataSource?.clear()
+        arrDataSource?.clear()
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,16 +77,19 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         if (section == 0) {
-            return "JOB PREPARATION"
+            return sharedInstnce.filterArrayCategory[0].categoryDisplay
         }
         else if (section == 1) {
-            return "LANGUAGE"
+            return sharedInstnce.filterArrayCategory[1].categoryDisplay
         }
         else if (section == 2) {
-            return "TEST PREPARATION"
+            return sharedInstnce.filterArrayCategory[2].categoryDisplay
+        }
+        else if (section == 3) {
+            return sharedInstnce.filterArrayCategory[3].categoryDisplay
         }
         else  {
-            return "PROGRAMMING"
+            return sharedInstnce.filterArrayCategory[4].categoryDisplay
         }
         
         
@@ -70,13 +98,12 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
     
     
     func numberOfSections(in tableView: UITableView) -> Int{
-        return 4
+        return sharedInstnce.filterArrayCategory.count
     }
     
     
     
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 1
     }
     
@@ -132,11 +159,7 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
         
         
     }
-    
-    
-    
-    
-    
+
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView

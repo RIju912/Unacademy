@@ -56,7 +56,6 @@ class TextViewCell: UITableViewCell,UITableViewDelegate,UITableViewDataSource {
         self.heightConstraint.constant = cell.contentView.frame.height//cell.contentView.height()
         
         let totalCellH = Double(cell.txtlabel.getTotalWidth())/Double(cell.contentView.frame.width)
-        print("myNoofLine:\(totalCellH)")
         if totalCellH>1 {
             self.heightConstraint.constant = CGFloat(Double(totalCellH*60))
             
