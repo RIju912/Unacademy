@@ -38,9 +38,13 @@ class ViewController: UIViewController {
             
         }
     }
+    //Mark: - Bunch API result
     var arrDataSource: UnacademyAPIResults?
+    //Array API for Name strings
     var arrNames = [UnacademyShortName]()
+    //Array API for Name categories
     var arrDisplayCategory = [UnacademyCategoryDisplay]()
+    //Singleton for Name Unique categories
     let sharedInstnce = UnacademySingleton.sharedInstance
 
     override func viewDidLoad() {
