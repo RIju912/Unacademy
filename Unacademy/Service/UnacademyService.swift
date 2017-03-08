@@ -29,7 +29,7 @@ class UnacademyService: NSObject{
     
     //MARK: - Main API Call
     func getAllCourses(_ completion:@escaping ((UnacademyDatasource?, Error?) -> Void)) {
-        
+        //network check
         getAllCoursesService(collection: UnacademyDatasource(), completion: completion)
         
     }
@@ -61,7 +61,7 @@ class UnacademyService: NSObject{
                         }
                         
                         for courseJson in courseList {
-                            
+                            print(courseList)
                             let courseL = UnacademyAPIResults(json: courseJson)
                             collection.unacademyDatasource.append(courseL)
                             
