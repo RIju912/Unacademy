@@ -64,6 +64,7 @@ class TextViewCell: UITableViewCell,UITableViewDelegate,UITableViewDataSource {
         let cell = object as! TextLabelCell
         
         cell.txtlabel.setTags(textV)
+        cell.txtlabel.textAlignment = .center
         self.heightConstraint.constant = cell.contentView.frame.height//cell.contentView.height()
         
         let totalCellH = Double(cell.txtlabel.getTotalWidth())/Double(cell.contentView.frame.width)
