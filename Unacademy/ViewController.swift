@@ -59,6 +59,8 @@ class ViewController: UIViewController, NVActivityIndicatorViewable {
         iboTableView.isHidden = true
         refreshControl.addTarget(self, action: #selector(ViewController.pullToRefresh), for: .valueChanged)
         iboTableView.addSubview(refreshControl)
+        self.iboTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        updateInterfaceWithCurrent(networkStatus: reachability.currentReachabilityStatus())
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityStatusChanged(_:)), name: .reachabilityChanged, object: nil)
         startAnimating(size, message: "Please wait...", type: NVActivityIndicatorType(rawValue: 30)!)
         self.iboTableView.register(UINib(nibName: "TextViewCell", bundle: nil), forCellReuseIdentifier: "TextViewCell")
@@ -66,7 +68,6 @@ class ViewController: UIViewController, NVActivityIndicatorViewable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateInterfaceWithCurrent(networkStatus: reachability.currentReachabilityStatus())
     }
     
     //MARK: - Reachbility via API Call & Data loading
@@ -120,10 +121,6 @@ class ViewController: UIViewController, NVActivityIndicatorViewable {
         return
     }
     
-    @IBAction func ibaBackPressed(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-        arrDataSource?.clear()
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -150,6 +147,7 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
+    
     
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

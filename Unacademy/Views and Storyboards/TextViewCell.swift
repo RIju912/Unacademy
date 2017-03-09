@@ -10,7 +10,15 @@ import UIKit
 
 class TextViewCell: UITableViewCell,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!{
+        
+        didSet {
+            
+            tableView.estimatedRowHeight = 60.0
+            tableView.rowHeight = UITableViewAutomaticDimension
+            
+        }
+    }
     var textArray = [UnacademyShortName]()
     var categoryTypeName: String?
     
@@ -24,9 +32,7 @@ class TextViewCell: UITableViewCell,UITableViewDelegate,UITableViewDataSource {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         self.tableView.register(UINib(nibName: "TextLabelCell", bundle: nil), forCellReuseIdentifier: "TextLabelCell")
-        //self.textV = UnTextMoDel.createDataForTxtView(txtDataJson: self.totalArray.mutableCopy() as! NSArray)
     }
     
     
@@ -71,12 +77,13 @@ class TextViewCell: UITableViewCell,UITableViewDelegate,UITableViewDataSource {
     // MARK: - UITableViewDelegate
     
     internal func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 1000
+        return UITableViewAutomaticDimension
     }
     
     internal func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return UITableViewAutomaticDimension
+          return UITableViewAutomaticDimension
+        
     }
     
     

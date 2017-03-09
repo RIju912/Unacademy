@@ -98,9 +98,6 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="86" id="ZDf-ZU-v7y"/>
                                         </constraints>
-                                        <connections>
-                                            <action selector="ibaBackPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xQV-Qe-cGb"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
