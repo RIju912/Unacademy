@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
+
+
+var reachability = Reachability()
 
 extension Array {
     
@@ -26,7 +30,7 @@ extension Array {
     }
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, NVActivityIndicatorViewable {
     
     
     @IBOutlet weak var iboTableView: UITableView!{
@@ -46,18 +50,54 @@ class ViewController: UIViewController {
     var arrDisplayCategory = [UnacademyCategoryDisplay]()
     //Singleton for Name Unique categories
     let sharedInstnce = UnacademySingleton.sharedInstance
+    let size = CGSize(width: 30, height: 30)
+    let refreshControl = UIRefreshControl()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         iboTableView.isHidden = true
+        refreshControl.addTarget(self, action: #selector(ViewController.pullToRefresh), for: .valueChanged)
+        iboTableView.addSubview(refreshControl)
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityStatusChanged(_:)), name: .reachabilityChanged, object: nil)
+        startAnimating(size, message: "Please wait...", type: NVActivityIndicatorType(rawValue: 30)!)
         self.iboTableView.register(UINib(nibName: "TextViewCell", bundle: nil), forCellReuseIdentifier: "TextViewCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        updateInterfaceWithCurrent(networkStatus: reachability.currentReachabilityStatus())
+    }
+    
+    //MARK: - Reachbility via API Call & Data loading
+    func updateInterfaceWithCurrent(networkStatus: NetworkStatus) {
+        switch networkStatus {
+        case NotReachable:
+            self.showAlertMessage("Sorry, no internet connections available.")
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.0) {
+                self.stopAnimating()
+            }
+            return
+        case ReachableViaWiFi:
+            self.loadAllCourseData()
+        case ReachableViaWWAN:
+            self.loadAllCourseData()
+        default:
+            return
+        }
         
+    }
+    
+    func loadAllCourseData(){
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+            NVActivityIndicatorPresenter.sharedInstance.setMessage("Processing data...")
+        }
         UnacademyService.sharedInstance().getAllCourses {(collection:UnacademyDatasource?, error:Error?) -> Void in
             self.iboTableView.isHidden = false
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.0) {
+                self.stopAnimating()
+            }
             self.arrNames = (collection?.unacademyShortName)!
             self.arrDisplayCategory = (collection?.unacademysCategoryDisplay)!
             self.sharedInstnce.filterArrayCategory = self.arrDisplayCategory.filterDuplicates { $0.categoryDisplay! == $1.categoryDisplay! }
@@ -65,6 +105,21 @@ class ViewController: UIViewController {
             
         }
     }
+    
+    func reachabilityStatusChanged(_ sender: NSNotification) {
+        guard let networkStatus = (sender.object as? Reachability)?.currentReachabilityStatus() else { return }
+        updateInterfaceWithCurrent(networkStatus: networkStatus)
+    }
+    
+    //MARK: - Pull to Refresh
+    func pullToRefresh() {
+        startAnimating(size, message: "Loading...", type: NVActivityIndicatorType(rawValue: 30)!)
+        iboTableView.isHidden = true
+        updateInterfaceWithCurrent(networkStatus: reachability.currentReachabilityStatus())
+        refreshControl.endRefreshing()
+        return
+    }
+    
     @IBAction func ibaBackPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
         arrDataSource?.clear()
