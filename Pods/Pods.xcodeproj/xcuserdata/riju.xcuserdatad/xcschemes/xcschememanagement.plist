@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>NVActivityIndicatorView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Unacademy.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>793DE931A647CA6D3768EB30F8A16F0F</key>
+		<key>07E31F0703EC995E32C9463952AF955E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2C05A0E2E768E66B49F7BC880F7F19BB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>390BD0D4F75815CC52CD0F440A36ABCE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3EDFE4052B5DE7D509935AC0774CB135</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8BB3BC2E32DEDA09F07C73984DAAC544</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E415C3CA6DBCC9F7DDC18816D797ABEE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

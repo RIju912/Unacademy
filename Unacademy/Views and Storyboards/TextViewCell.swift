@@ -11,11 +11,12 @@ import UIKit
 class TextViewCell: UITableViewCell,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var tableView: UITableView!
-    var textArray: NSArray = []
-    var arrDataModel: UnacademyDatasource?
+    var textArray = [UnacademyShortName]()
+    var categoryTypeName: String?
     
-    var secondPartImageArray : NSArray = []
-    var totalArray : NSArray = ["ugvuuvlvulvyyvlyvlvyvlylvylvvl", "ugvuuvlvulvyyvlyvlvyvlylvylvvl", "ugvuuvlvulvyyvlyvlvyvlylvylvvl"]
+    
+    var arrDataModel: UnacademyDatasource?
+    var totalArray : NSMutableArray = []
     var textV = [LableBk]()
     
     var numOfColumns : Int = 2
@@ -25,10 +26,7 @@ class TextViewCell: UITableViewCell,UITableViewDelegate,UITableViewDataSource {
         super.awakeFromNib()
         
         self.tableView.register(UINib(nibName: "TextLabelCell", bundle: nil), forCellReuseIdentifier: "TextLabelCell")
-        
-        self.textV = UnTextMoDel.createDataForTxtView(txtDataJson: self.totalArray.mutableCopy() as! NSArray)
-        
-        
+        //self.textV = UnTextMoDel.createDataForTxtView(txtDataJson: self.totalArray.mutableCopy() as! NSArray)
     }
     
     
@@ -42,6 +40,13 @@ class TextViewCell: UITableViewCell,UITableViewDelegate,UITableViewDataSource {
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TextLabelCell", for: indexPath)
+        
+        let filteredArray = textArray.filter() { $0.categoryName == self.categoryTypeName }
+        for value in filteredArray {
+            self.totalArray.add(value.shortName ?? "")
+            
+        }
+        self.textV = UnTextMoDel.createDataForTxtView(txtDataJson: self.totalArray.mutableCopy() as! NSArray)
         self.configureCell(cell, atIndexPath: indexPath)
         return cell
     }

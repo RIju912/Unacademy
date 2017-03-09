@@ -49,6 +49,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        iboTableView.isHidden = true
         self.iboTableView.register(UINib(nibName: "TextViewCell", bundle: nil), forCellReuseIdentifier: "TextViewCell")
     }
     
@@ -56,6 +57,7 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         
         UnacademyService.sharedInstance().getAllCourses {(collection:UnacademyDatasource?, error:Error?) -> Void in
+            self.iboTableView.isHidden = false
             self.arrNames = (collection?.unacademyShortName)!
             self.arrDisplayCategory = (collection?.unacademysCategoryDisplay)!
             self.sharedInstnce.filterArrayCategory = self.arrDisplayCategory.filterDuplicates { $0.categoryDisplay! == $1.categoryDisplay! }
@@ -78,27 +80,10 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate,UITableViewDataSource {
     
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        if (section == 0) {
-            return sharedInstnce.filterArrayCategory[0].categoryDisplay
-        }
-        else if (section == 1) {
-            return sharedInstnce.filterArrayCategory[1].categoryDisplay
-        }
-        else if (section == 2) {
-            return sharedInstnce.filterArrayCategory[2].categoryDisplay
-        }
-        else if (section == 3) {
-            return sharedInstnce.filterArrayCategory[3].categoryDisplay
-        }
-        else  {
-            return sharedInstnce.filterArrayCategory[4].categoryDisplay
-        }
-        
-        
+            return sharedInstnce.filterArrayCategory[section].categoryDisplay
     }
-    
     
     
     func numberOfSections(in tableView: UITableView) -> Int{
@@ -115,52 +100,14 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var textCell: TextViewCell!
         
-        if (indexPath.section == 0) {
             if (textCell == nil) {
                 textCell = (tableView.dequeueReusableCell(withIdentifier: "TextViewCell") as? TextViewCell)!
             }
             textCell.selectionStyle = UITableViewCellSelectionStyle.none
             textCell.numOfColumns = 2
-            
+            textCell.categoryTypeName = sharedInstnce.filterArrayCategory[indexPath.section].categoryDisplay
+            textCell.textArray = self.arrNames
             return textCell
-        }
-            
-        else if (indexPath.section == 1) {
-            if (textCell == nil) {
-                textCell = (tableView.dequeueReusableCell(withIdentifier: "TextViewCell") as? TextViewCell)!
-            }
-            textCell.selectionStyle = UITableViewCellSelectionStyle.none
-            textCell.numOfColumns = 2
-            
-            return textCell
-        }
-        else if (indexPath.section == 2) {
-            if (textCell == nil) {
-                textCell = (tableView.dequeueReusableCell(withIdentifier: "TextViewCell") as? TextViewCell)!
-            }
-            textCell.selectionStyle = UITableViewCellSelectionStyle.none
-            textCell.numOfColumns = 2
-            
-            return textCell
-        }
-        else if (indexPath.section == 3) {
-            
-            if (textCell == nil) {
-                textCell = (tableView.dequeueReusableCell(withIdentifier: "TextViewCell") as? TextViewCell)!
-            }
-            textCell.selectionStyle = UITableViewCellSelectionStyle.none
-            textCell.numOfColumns = 2
-            
-            return textCell
-        }else{
-            if (textCell == nil) {
-                textCell = (tableView.dequeueReusableCell(withIdentifier: "TextViewCell") as? TextViewCell)!
-            }
-            textCell.selectionStyle = UITableViewCellSelectionStyle.none
-            textCell.numOfColumns = 2
-            return textCell
-        }
-        
         
     }
 
