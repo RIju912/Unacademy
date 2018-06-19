@@ -1,4 +1,4 @@
-# Unacademy
+# TableView Customization
 - You'll need to create a view as designed below. The view is basically a TableView with cells, sections and headers. 
 - Try to make it as customisable as possible with settings like aligment(center, left, right), dimensions, appearance, etc.  
 - Your view should be able to adapt to the content of each cell item.
